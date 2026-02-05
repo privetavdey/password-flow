@@ -1,0 +1,6 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="clock" opacity="0.5">
+<path id="Vector 748" d="M15.3666 20.3167L12 22L8.63344 20.3167C4.56803 18.284 2 14.1289 2 9.58359V4L2.35762 3.85695C5.42436 2.63025 8.69701 2 12 2C15.303 2 18.5756 2.63025 21.6424 3.85695L22 4V9.58359C22 14.1289 19.432 18.284 15.3666 20.3167Z" stroke="var(--stroke-0, white)" stroke-width="2"/>
+<path id="Union" d="M15 11L12 14L9 11L12 8L15 11Z" fill="var(--fill-0, white)"/>
+</g>
+</svg>
