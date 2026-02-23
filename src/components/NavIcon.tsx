@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useRive, useStateMachineInput, Layout, Fit, Alignment } from '@rive-app/react-canvas';
+import { useRive, useStateMachineInput, Layout, Fit, Alignment } from '@rive-app/react-webgl2';
 
 interface NavIconProps {
   src: string;
