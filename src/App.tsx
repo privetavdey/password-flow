@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import OnrampOfframp from './components/OnrampOfframp';
+import { SetupPasswordFlow } from './components/SetupPasswordFlow';
+import { EnterPasswordFlow } from './components/EnterPasswordFlow';
 import { DARK_COLORS, LIGHT_COLORS } from './constants/styles';
 import { ThemeContext } from './constants/ThemeContext';
 
@@ -17,98 +19,57 @@ const TOGGLE_STYLE = {
     width: '160px',
     textAlign: 'left' as const,
   },
-  on: { backgroundColor: '#13bc80' },
-  off: { backgroundColor: '#333' },
 };
 
 function App() {
-  const [isDone, setIsDone] = useState(false);
-  const [isShield, setIsShield] = useState(false);
-  const [isSwap, setIsSwap] = useState(false);
-  const [isSend, setIsSend] = useState(false);
   const [isDark, setIsDark] = useState(true);
+  const [flowMode, setFlowMode] = useState<'setup' | 'enter'>('setup');
+  const [onboardingComplete, setOnboardingComplete] = useState(false);
+  const [flowKey, setFlowKey] = useState(0);
 
-  const riveInputs = { isDone, isShield, isSwap, isSend, isDark };
+  const riveInputs = { isDone: false, isShield: false, isSwap: false, isSend: false, isDark };
   const colors = isDark ? DARK_COLORS : LIGHT_COLORS;
-
-  const toggles = [
-    { label: 'isSend', value: isSend, toggle: () => setIsSend(p => !p) },
-    { label: 'isShield', value: isShield, toggle: () => setIsShield(p => !p) },
-    { label: 'isSwap', value: isSwap, toggle: () => setIsSwap(p => !p) },
-    { label: 'Done', value: isDone, toggle: () => setIsDone(p => !p) },
-  ];
-
-  const anyOn = isDone || isShield || isSwap || isSend;
 
   return (
     <ThemeContext.Provider value={colors}>
       <div className="min-h-screen w-full flex items-center justify-center bg-[#D4D4D4] p-8 gap-8">
-        <div className="relative">
-          {/* Hint label */}
-          <p
-            style={{
-              position: 'absolute',
-              right: 'calc(100% + 12px)',
-              top: '330px',
-              fontFamily: 'system-ui, sans-serif',
-              fontSize: '15px',
-              fontWeight: 500,
-              color: '#E85D5D',
-              whiteSpace: 'nowrap',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-            }}
-          >
-            Press it
-            <span style={{ fontSize: '18px' }}>→</span>
-          </p>
-          <div 
-            className="relative overflow-hidden shadow-2xl"
-            style={{ width: '393px', height: '852px' }}
-          >
+        <div
+          className="relative overflow-hidden shadow-2xl"
+          style={{ width: '393px', height: 'calc(100vh - 64px)', maxHeight: '852px', borderRadius: '16px' }}
+        >
+          {onboardingComplete ? (
             <OnrampOfframp riveInputs={riveInputs} />
-          </div>
+          ) : flowMode === 'setup' ? (
+            <SetupPasswordFlow key={flowKey} onComplete={() => setOnboardingComplete(true)} />
+          ) : (
+            <EnterPasswordFlow key={flowKey} onComplete={() => setOnboardingComplete(true)} />
+          )}
         </div>
 
-        {/* External Controls */}
+        {/* Controls */}
         <div className="flex flex-col gap-2 items-start">
           <p style={{ fontFamily: 'system-ui', fontSize: '11px', fontWeight: 700, color: '#666', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>
-            State Machine Inputs
+            Flow
           </p>
-          {toggles.map(({ label, value, toggle }) => (
-            <button
-              key={label}
-              onClick={toggle}
-              style={{
-                ...TOGGLE_STYLE.base,
-                ...(value ? TOGGLE_STYLE.on : TOGGLE_STYLE.off),
-              }}
-            >
-              {label}: {value ? 'ON' : 'OFF'}
-            </button>
-          ))}
-          {anyOn && (
-            <button
-              onClick={() => { setIsDone(false); setIsShield(false); setIsSwap(false); setIsSend(false); }}
-              style={{
-                padding: '8px 16px',
-                backgroundColor: 'transparent',
-                color: '#666',
-                border: '1px solid #999',
-                borderRadius: '8px',
-                fontSize: '12px',
-                fontWeight: 500,
-                cursor: 'pointer',
-                fontFamily: 'system-ui, sans-serif',
-                marginTop: '4px',
-              }}
-            >
-              Reset All
-            </button>
-          )}
+          <button
+            onClick={() => {
+              const next = flowMode === 'setup' ? 'enter' : 'setup';
+              setFlowMode(next as 'setup' | 'enter');
+              setOnboardingComplete(false);
+              setFlowKey(k => k + 1);
+            }}
+            style={{
+              ...TOGGLE_STYLE.base,
+              backgroundColor: flowMode === 'setup' ? '#1a6b4a' : '#4a1a6b',
+              color: '#fff',
+              border: '1px solid',
+              borderColor: flowMode === 'setup' ? '#2a8b5a' : '#6a2a8b',
+            }}
+          >
+            {flowMode === 'setup' ? 'Setup Password' : 'Enter Password'}
+          </button>
 
-          <div style={{ width: '100%', height: '1px', backgroundColor: '#ccc', margin: '12px 0' }} />
+          <div style={{ width: '100%', height: '1px', backgroundColor: '#ccc', margin: '8px 0' }} />
 
           <p style={{ fontFamily: 'system-ui', fontSize: '11px', fontWeight: 700, color: '#666', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>
             Appearance

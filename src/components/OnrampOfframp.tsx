@@ -39,6 +39,19 @@ export default function OnrampOfframp({ riveInputs }: OnrampOfframpProps) {
   const C = useThemeColors();
   const [activeTab, setActiveTab] = useState(0);
   const [isSendModalOpen, setIsSendModalOpen] = useState(false);
+  const [entered, setEntered] = useState(false);
+
+  React.useEffect(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setEntered(true));
+    });
+  }, []);
+
+  const stagger = (i: number): React.CSSProperties => ({
+    opacity: entered ? 1 : 0,
+    transform: entered ? 'translateY(0)' : 'translateY(16px)',
+    transition: `opacity 300ms ease ${i * 60}ms, transform 300ms ease ${i * 60}ms`,
+  });
 
   return (
     <div 
@@ -60,7 +73,7 @@ export default function OnrampOfframp({ riveInputs }: OnrampOfframpProps) {
       >
         <div 
           className="content-stretch flex flex-col items-center relative shrink-0 w-full"
-          style={{ gap: SPACING.sm }}
+          style={{ gap: SPACING.sm, ...stagger(0) }}
           data-node-id="5567:32647"
         >
           <div className="content-stretch flex items-center justify-between relative shrink-0 w-[353px]" data-node-id="5567:32642">
@@ -165,7 +178,7 @@ export default function OnrampOfframp({ riveInputs }: OnrampOfframpProps) {
             </div>
           </div>
         </div>
-        <div className="content-stretch flex gap-[27px] items-center relative shrink-0" data-node-id="5567:32569">
+        <div className="content-stretch flex gap-[27px] items-center relative shrink-0" style={stagger(1)} data-node-id="5567:32569">
           {[
             { img: imgClock, label: 'Send', onClick: () => setIsSendModalOpen(true) },
             { img: imgClock1, label: 'Receive' },
@@ -199,14 +212,15 @@ export default function OnrampOfframp({ riveInputs }: OnrampOfframpProps) {
             </div>
           ))}
         </div>
-        <div 
+        <div
           className="bg-gradient-to-b content-stretch flex flex-col h-[455px] items-start relative shrink-0 w-full"
-          style={{ 
+          style={{
             backgroundImage: `linear-gradient(to bottom, ${C.BG_SUBTLE}, ${C.BG_SUBTLE_TRANSPARENT})`,
             paddingLeft: SPACING.md,
             paddingRight: SPACING.md,
             paddingTop: '20px',
-            borderRadius: BORDER_RADIUS.md
+            borderRadius: BORDER_RADIUS.md,
+            ...stagger(2)
           }}
           data-node-id="5567:32641"
         >
@@ -333,7 +347,7 @@ export default function OnrampOfframp({ riveInputs }: OnrampOfframpProps) {
       {/* Bottom Nav */}
       <div 
         className="absolute backdrop-blur-[12px] border border-solid bottom-[42px] content-stretch flex flex-col h-[64px] items-center justify-center left-[calc(50%+0.5px)] translate-x-[-50%] w-[232px]"
-        style={{ backgroundColor: C.NAV_BG, borderColor: C.BORDER_SUBTLE, padding: SPACING.sm, borderRadius: BORDER_RADIUS.lg }}
+        style={{ backgroundColor: C.NAV_BG, borderColor: C.BORDER_SUBTLE, padding: SPACING.sm, borderRadius: BORDER_RADIUS.lg, ...stagger(3) }}
       >
         <div className="content-stretch flex h-[40px] items-center relative shrink-0 w-full">
           <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-center justify-center min-h-px min-w-px overflow-clip p-[8px] relative rounded-[16px]">
