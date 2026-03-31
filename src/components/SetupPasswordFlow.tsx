@@ -667,7 +667,7 @@ export const SetupPasswordFlow: React.FC<SetupPasswordFlowProps> = ({ onComplete
                     width: '136px',
                     height: '28px',
                     padding: 0,
-                    background: `url(${buttonBg}) center/contain no-repeat`,
+                    backgroundColor: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
                     display: 'flex',
@@ -677,6 +677,10 @@ export const SetupPasswordFlow: React.FC<SetupPasswordFlowProps> = ({ onComplete
                     position: 'relative',
                   }}
                 >
+                  <img src={buttonBg} alt="" style={{
+                    position: 'absolute', inset: 0, width: '100%', height: '100%',
+                    pointerEvents: 'none',
+                  }} />
                   <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '4px', height: '16px' }}>
                     {/* Copy state */}
                     <div style={{
