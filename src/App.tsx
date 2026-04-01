@@ -35,7 +35,7 @@ function App() {
       <div className="min-h-screen w-full flex items-center justify-center bg-[#D4D4D4] p-8 gap-8">
         <div
           className="relative overflow-hidden shadow-2xl"
-          style={{ width: '393px', height: 'calc(100vh - 64px)', maxHeight: '852px', borderRadius: '16px' }}
+          style={{ width: '393px', height: 'calc(100vh - 64px)', maxHeight: '720px', borderRadius: '16px' }}
         >
           {onboardingComplete ? (
             <OnrampOfframp riveInputs={riveInputs} />
