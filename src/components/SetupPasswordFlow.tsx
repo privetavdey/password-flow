@@ -5,6 +5,10 @@ import shieldLogo from '../assets/shield-logo.svg';
 import diamondMarker from '../assets/diamond-marker.svg';
 import eyeRevealIcon from '../assets/eye-reveal-icon.svg';
 import checkIcon from '../assets/check-icon.svg';
+import hexPrivacy from '../assets/hex-privacy.svg';
+import hexAnalytics from '../assets/hex-analytics.svg';
+import hexConnect from '../assets/hex-connect.svg';
+import hexLines from '../assets/hex-lines.svg';
 import buttonBg from '../assets/button-bg.svg';
 import dice01 from '../assets/dice01.svg';
 import dice02 from '../assets/dice02.svg';
@@ -1271,8 +1275,46 @@ export const SetupPasswordFlow: React.FC<SetupPasswordFlowProps> = ({ onComplete
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '12px',
+            gap: '24px',
           }}>
+            {/* Hex illustration */}
+            <div style={{
+              position: 'relative',
+              width: '230px',
+              height: '204px',
+              ...exitStagger(0),
+            }}>
+              {/* Top hex — privacy */}
+              <img src={hexPrivacy} alt="" style={{
+                position: 'absolute', width: '103px', height: '103px',
+                left: '64px', top: '0px',
+              }} />
+              {/* Bottom-left hex — analytics */}
+              <img src={hexAnalytics} alt="" style={{
+                position: 'absolute', width: '103px', height: '103px',
+                left: '0px', top: '101px',
+              }} />
+              {/* Bottom-right hex — connect */}
+              <img src={hexConnect} alt="" style={{
+                position: 'absolute', width: '103px', height: '103px',
+                left: '127px', top: '101px',
+              }} />
+              {/* Connecting lines */}
+              <img src={hexLines} alt="" style={{
+                position: 'absolute', width: '38px', height: '49px',
+                left: '96px', top: '102px',
+              }} />
+              {/* Dots */}
+              <div style={{
+                position: 'absolute', width: '9px', height: '9px',
+                backgroundColor: 'white', left: '91px', top: '146px',
+              }} />
+              <div style={{
+                position: 'absolute', width: '9px', height: '9px',
+                backgroundColor: 'white', left: '130px', top: '146px',
+              }} />
+            </div>
+
             <p
               className="font-innovator"
               style={{
@@ -1282,7 +1324,7 @@ export const SetupPasswordFlow: React.FC<SetupPasswordFlowProps> = ({ onComplete
                 letterSpacing: '-0.64px',
                 color: C.TEXT_PRIMARY,
                 textAlign: 'center',
-                ...exitStagger(0),
+                ...exitStagger(1),
               }}
             >
               Help improve Shield?
@@ -1296,7 +1338,7 @@ export const SetupPasswordFlow: React.FC<SetupPasswordFlowProps> = ({ onComplete
                 color: C.TEXT_PRIMARY,
                 textAlign: 'center',
                 width: '313px',
-                ...exitStagger(1),
+                ...exitStagger(2),
               }}
             >
               Help improve Shield by sharing anonymous diagnostics and data. It can not be used to track you and does not affect your privacy.

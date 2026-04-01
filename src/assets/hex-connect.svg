@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 103 105.309" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 626860">
+<foreignObject x="-46.1003" y="-52" width="195.201" height="209.309"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(26px);clip-path:url(#bgblur_0_0_4_clip_path);height:100%;width:100%"></div></foreignObject><path id="Polygon 1" data-figma-bg-blur-radius="52" d="M51.5 1.1547L96.1003 26.9047V78.4047L51.5 104.155L6.89969 78.4047V26.9047L51.5 1.1547Z" stroke="var(--stroke-0, white)" stroke-width="2"/>
+<g id="Group 626848">
+<path id="Vector 848" d="M38.7755 52.9516H51.8163V64.3597H64.2245" stroke="var(--stroke-0, white)" stroke-width="2"/>
+<path id="Vector 849" d="M38.7755 52.9516H51.8163V41.5434H64.2245" stroke="var(--stroke-0, white)" stroke-width="2"/>
+<rect id="Rectangle 240652437" x="64.2245" y="59.972" width="8.77551" height="8.77551" rx="4.38775" stroke="var(--stroke-0, white)" stroke-width="2"/>
+<rect id="Rectangle 240652438" x="64.2245" y="37.1557" width="8.77551" height="8.77551" rx="4.38775" stroke="var(--stroke-0, white)" stroke-width="2"/>
+<rect id="Rectangle 240652439" x="30" y="48.5638" width="8.77551" height="8.77551" rx="4.38775" stroke="var(--stroke-0, white)" stroke-width="2"/>
+</g>
+</g>
+<defs>
+<clipPath id="bgblur_0_0_4_clip_path" transform="translate(46.1003 52)"><path d="M51.5 1.1547L96.1003 26.9047V78.4047L51.5 104.155L6.89969 78.4047V26.9047L51.5 1.1547Z"/>
+</clipPath></defs>
+</svg>
